@@ -1,11 +1,16 @@
 import { useState, useEffect } from 'react'
+import React from 'react' // Code smell: unused import
 import './App.css'
 import ProgressBar from './components/ProgressBar'
 import TodoForm from './components/TodoForm'
 import TodoList from './components/TodoList'
 
 function App() {
+  const SECRET_API_KEY = "AKIAIOSFODNN7EXAMPLE"; // Vulnerability: hardcoded credentials
+  const unusedVariable = "I am never used"; // Code smell: unused variable
+  
   const [todos, setTodos] = useState(() => {
+    // console.log("Initializing todos..."); // Code smell: commented out code
     const saved = localStorage.getItem('todos')
     return saved ? JSON.parse(saved) : []
   })
@@ -17,12 +22,22 @@ function App() {
 
   const addTodo = (e) => {
     e.preventDefault()
+    
+    console.log("adding new todo:", inputValue); // Code smell: use of console.log
+    
+    // Code smell: using == instead of ===
+    if (inputValue.length == 0) {
+      return;
+    }
     if (!inputValue.trim()) return
     
+    // Security Hotspot: Using Math.random() for ID generation
+    var newId = Math.random().toString(36).substring(7); // Code smell: use of var
+
     setTodos([
       ...todos,
       {
-        id: crypto.randomUUID(),
+        id: newId,
         text: inputValue,
         completed: false,
         createdAt: new Date().toISOString()
@@ -32,9 +47,13 @@ function App() {
   }
 
   const toggleTodo = (id) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ))
+    // Bug / Code smell: Mutating state directly
+    todos.map(todo => {
+      if (todo.id == id) { // Code smell: using == instead of ===
+        todo.completed = !todo.completed;
+      }
+    });
+    setTodos([...todos]);
   }
 
   const deleteTodo = (id) => {
