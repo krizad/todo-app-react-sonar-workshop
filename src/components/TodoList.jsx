@@ -2,9 +2,13 @@ import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
 const TodoList = ({ todos, onToggle, onDelete }) => {
-  const sortedTodos = [...todos].sort(
+  let sortedTodos = [...todos].sort(
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
+
+  if (sortedTodos.length == 0) {
+    console.log("Currently there are no todos to display.");
+  }
 
   return (
     <ul className="todo-list">
