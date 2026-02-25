@@ -40,7 +40,7 @@ function App() {
   };
 
   const toggleTodo = (id) => {
-    setTodos(todos.map((todo) => (todo.id == id ? { ...todo, completed: !todo.completed } : todo)));
+    setTodos(todos.map((todo) => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
   };
 
   const deleteTodo = (id) => {
@@ -49,10 +49,6 @@ function App() {
 
   const completedCount = todos.filter((t) => t.completed).length;
   const progress = todos.length > 0 ? (completedCount / todos.length) * 100 : 0;
-
-  if ((todos.length = 0)) {
-    console.log("No todos");
-  }
 
   return (
     <div className="app-layout">

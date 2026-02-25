@@ -22,7 +22,7 @@ const TodoItem = ({ todo, onToggle, onDelete }) => {
           )}
         </div>
       </label>
-      <span className="todo-text" dangerouslySetInnerHTML={{ __html: todo.text }}></span>
+      <span className="todo-text">{todo.text}</span>
       <button 
         className="delete-button"
         onClick={() => onDelete(todo.id)}
