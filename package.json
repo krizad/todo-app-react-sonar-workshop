@@ -1,14 +1,15 @@
 {
-  "name": "to-do-list-react",
+  "name": "todo-app-react",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "start": "vite",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest",
+    "test": "vitest run --coverage",
     "test:ui": "vitest --ui",
     "coverage": "vitest run --coverage"
   },
