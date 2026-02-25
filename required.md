@@ -1,15 +1,19 @@
-Workshop setup — required tools
-================================
+# 🚀 Workshop Setup: SonarQube Community Build via Docker Compose
 
-For the SonarQube workshop you'll need the following tools installed on your machine:
+[cite_start]To get this workshop rolling, we are using Docker to run the SonarQube server and SonarScanner[cite: 11, 12]. [cite_start]This approach keeps your host machine clean (no Java required) and makes future upgrades frictionless[cite: 13, 14].
 
-- Git
-- Docker
-- Docker Compose (Docker Desktop includes Docker Compose; on CLI you can install the plugin)
-- Node.js 20+ (Node 20 or newer)
-- Sonar CLI (SonarQube scanner — npm package `@sonar/scan`)
+## 🛠️ 1. Required Tools
 
-Quick install (macOS using Homebrew)
+Ensure you have the following installed on your machine:
+
+- **Git**
+- **Docker & Docker Compose** (Docker Desktop includes Compose; Linux users may need the standalone plugin)
+- **Node.js 20+** (Includes npm)
+- **Sonar CLI** (`@sonar/scan` npm package)
+
+### Quick Install (macOS via Homebrew)
+
+If you're on a Mac, you can speedrun the setup:
 
 ```bash
 # Git
@@ -18,22 +22,24 @@ brew install git
 # Docker (Docker Desktop)
 brew install --cask docker
 
-# Docker Compose plugin (if you need the standalone plugin)
-brew install docker-compose-plugin
-
-# Install nvm (recommended) and Node 20
+# Install nvm (Node Version Manager)
 curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.6/install.sh | bash
-# then restart your shell and run:
+
+# Restart your shell, then install Node 20
 nvm install 20
 
-# Install Sonar CLI globally via npm (recommended for local dev; for CI you may download the official distro):
+# Install Sonar CLI globally for local dev
 npm install -g @sonar/scan
 ```
 
-Notes
+## ✅ 2. Verify Installations
 
-- Docker Desktop includes Docker Compose; if using a Linux server you may install the Compose plugin or use the standalone binary.
-- If you prefer a system Node.js install, use your package manager or the official Node installer. Using `nvm` makes switching Node versions easy.
-- The Sonar CLI can also be downloaded from the SonarQube website (recommended for CI). If you use npm, `@sonar/scan` provides a convenient CLI wrapper.
+Run a quick vibe check to ensure everything is ready to go:
 
-If you'd like, I can add Windows and Linux-specific commands or include a script to verify these tools are installed on a developer machine.
+```bash
+git --version
+docker --version
+docker compose version
+node -v
+npm -v
+```
