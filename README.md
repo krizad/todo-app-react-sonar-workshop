@@ -35,7 +35,7 @@ This repository is designed for the SonarQube Workshop. It contains a React To-D
 
 ## SonarQube Analysis
 
-To run a SonarQube analysis on this project, ensure you have a SonarQube server running and the `sonar-scanner` installed.
+To run a SonarQube analysis on this project, ensure you have a SonarQube server running and the Sonar CLI installed (see `required.md`, e.g. `npm install -g @sonar/scan`).
 
 1. Configure your project properties in `sonar-project.properties` (or use the `.example` file as a template).
 2. Generate the coverage report first:
@@ -47,5 +47,7 @@ To run a SonarQube analysis on this project, ensure you have a SonarQube server 
 3. Run the scanner:
 
    ```bash
-   sonar-scanner
+   sonar
    ```
+
+See `required.md` for workshop setup and the list of required tools (macOS/Homebrew commands and notes).
