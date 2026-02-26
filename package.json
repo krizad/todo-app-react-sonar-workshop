@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "sonar": "sonar"
   },
   "dependencies": {
     "@sonar/scan": "^4.3.4",
